@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>s2g.core</groupId>
+    <artifactId>spark-sample</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-core_2.10</artifactId>
+            <version>1.3.1</version>
+            <!--no need to include in uber jar-->
+            <!--<scope>provided</scope>-->
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.6.2</version>
+        </dependency>
+        <dependency>
+            <groupId>net.java.dev.jets3t</groupId>
+            <artifactId>jets3t</artifactId>
+            <version>0.9.4</version>
+        </dependency>
+                <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-aws</artifactId>
+            <version>2.6.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>1.3.2</version>
+           <scope>provided</scope>
+        </dependency>
+       
+    </dependencies>
+    
+    <build>
+        <plugins>
+            <!-- Maven shade plug-in that creates uber JARs|enable to run from command line or in cluster mode -->
+<!--            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>2.3</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            shade plugin to remove signature files in your final META-INF/ 
+                            <filters>
+                                <filter> 
+                                    <artifact>*:*</artifact> 
+                                    <excludes> 
+                                      <exclude>org/datanucleus/**</exclude> 
+                                        <exclude>META-INF/*.SF</exclude> 
+                                        <exclude>META-INF/*.DSA</exclude> 
+                                        <exclude>META-INF/*.RSA</exclude> 
+                                    </excludes> 
+                                   
+                                </filter> 
+                            </filters> 
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <showDeprecation>false</showDeprecation>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
